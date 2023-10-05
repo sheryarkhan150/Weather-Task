@@ -1,11 +1,22 @@
 import csv
+def read_report(file_path):
 
-file = open("weather_1.csv")
-csvreader = csv.DictReader(file)
-header = next(csvreader)
-print(header)
-rows = []
-for row in csvreader:
-    rows.append(row)
-print(rows)
-file.close()
+    with open("weather_1.csv","r") as file:
+        csvreader = csv.reader(file)
+        header = next(csvreader)
+        print(header)
+        rows = []
+        for row in csvreader:
+            rows.append(row)
+        print(rows)
+        
+    data = []
+    with open(file_path,"r") as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            data.append(row)
+    return data
+
+#Calling the function:
+
+weather = read_report("/home/sheryar/Documents/github/WeatherTask/weather_1.csv")
